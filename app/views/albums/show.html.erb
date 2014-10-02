@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @album.name %>
-</p>
+<h1>
+  <strong><%= @album.name %></strong>
+
+</h1>
 
 <p>
   <strong>Band:</strong>
-  <%= @album.band %>
+  <a href="<%=band_url(@album.band)%>"><%=@album.band.name %></a>
 </p>
 
 <p>
@@ -15,5 +15,13 @@
   <%= @album.recording_type %>
 </p>
 
-<%= link_to 'Edit', edit_album_path(@album) %> |
+<p>
+  <strong>Tracks:</strong>
+  <% @album.tracks.each do |track| %>
+    <a href="<%= track_url(track) %>"><%= track.name %></a>
+  <% end %>
+</p>
+
+<a href="<%= new_album_track_url(@album) %>">New Track</a>
+<%= link_to 'Edit', edit_album_url(@album) %> |
 <%= link_to 'Back', albums_path %>

@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    @album = Album.new
+    @album = Band.find(params[:band_id]).albums.new
   end
 
   # GET /albums/1/edit
@@ -24,7 +24,7 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
+    @album = Band.find(params[:album][:band_id]).albums.new(album_params)
 
     respond_to do |format|
       if @album.save

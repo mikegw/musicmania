@@ -16,14 +16,17 @@
         <td><%= album.name %></td>
         <td><%= album.band %></td>
         <td><%= album.recording_type %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Show',
+           album_url(album),
+           method: :get %></td>
+           <!-- TO DO LATER -->
+        <td><%= button_to 'Edit',
+           edit_album_url(album),
+           method: :get %></td>
+        <td><%= button_to 'Delete Track',
+           album_url(album),
+           method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Album', new_album_path %>

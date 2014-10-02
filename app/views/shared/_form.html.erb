@@ -1,0 +1,26 @@
+<%= "<form action= \"#{users_url}\" method=\"post\">".html_safe %>
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <label for="user_email">User Email</label>
+  <input
+    type="text"
+    name="user[email]"
+    id="user_email"
+    value="<%= current_user.email if signed_in? %>">
+
+  <br>
+
+  <label for="password">Password</label>
+  <input
+    type="password"
+    name="user[password]"
+    id="password">
+
+  <br>
+
+  <input type="submit">
+
+</form>

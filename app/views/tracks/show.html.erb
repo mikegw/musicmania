@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @track.name %>
+  <strong><%= @track.name %></strong>
+
 </p>
 
 <p>
   <strong>Album:</strong>
-  <%= @track.album %>
+  <%= link_to @track.album.name, album_url(@track.album) %>
+</p>
+
+<p>
+  <strong>Band:</strong>
+  <%= link_to @track.album.band.name, band_url(@track.album.band) %>
 </p>
 
 <p>
@@ -17,7 +22,12 @@
 
 <p>
   <strong>Lyrics:</strong>
-  <%= @track.lyrics %>
+  <br>
+  <pre>
+    <% lyricize(@track.lyrics).each do |line|%>
+      <%= line %><br>
+    <% end %>
+  </pre>
 </p>
 
 <%= link_to 'Edit', edit_track_path(@track) %> |

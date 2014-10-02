@@ -12,9 +12,16 @@
     <% @bands.each do |band| %>
       <tr>
         <td><%= band.name %></td>
-        <td><%= link_to 'Show', band %></td>
-        <td><%= link_to 'Edit', edit_band_path(band) %></td>
-        <td><%= link_to 'Destroy', band, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Show',
+           band_url(band),
+           method: :get %></td>
+           <!-- TO DO LATER -->
+        <td><%= button_to 'Edit',
+           edit_band_url(band),
+           method: :get %></td>
+        <td><%= button_to 'Delete Track',
+           band_url(band),
+           method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141002143552) do
+ActiveRecord::Schema.define(version: 20141002212539) do
 
   create_table "albums", force: true do |t|
-    t.string   "name", null: false
-    t.integer  "band_id", null: false
+    t.string   "name",           null: false
+    t.integer  "band_id",        null: false
     t.string   "recording_type"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -24,14 +24,24 @@ ActiveRecord::Schema.define(version: 20141002143552) do
   add_index "albums", ["band_id"], name: "index_albums_on_band_id"
 
   create_table "bands", force: true do |t|
-    t.string   "name", null: false
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "notes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "track_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["track_id"], name: "index_notes_on_track_id"
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id"
+
   create_table "tracks", force: true do |t|
-    t.string   "name", null: false
-    t.integer  "album_id", null: false
+    t.string   "name",       null: false
+    t.integer  "album_id",   null: false
     t.string   "track_type", null: false
     t.string   "lyrics"
     t.datetime "created_at"
@@ -41,11 +51,13 @@ ActiveRecord::Schema.define(version: 20141002143552) do
   add_index "tracks", ["album_id"], name: "index_tracks_on_album_id"
 
   create_table "users", force: true do |t|
-    t.string   "email", null: false
+    t.string   "email",           null: false
     t.string   "password_digest", null: false
-    t.string   "session_token", null: false
+    t.string   "session_token",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
