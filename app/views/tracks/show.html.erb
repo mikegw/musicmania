@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% if @track.errors.full_messages %>
+  <% @track.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 
-<p>
+<h1>
   <strong><%= @track.name %></strong>
 
-</p>
+</h1>
 
 <p>
   <strong>Album:</strong>
@@ -19,6 +23,13 @@
   <strong>Track type:</strong>
   <%= @track.track_type %>
 </p>
+
+<br>
+
+<h3>Notes</h3>
+<%= render "tracks/notes", track: @track%>
+
+<%= (render "notes/form", track: @track) if signed_in? %>
 
 <p>
   <strong>Lyrics:</strong>

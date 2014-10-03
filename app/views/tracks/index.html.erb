@@ -1,5 +1,9 @@
 <h1>Listing tracks</h1>
-
+<% if @tracks.errors.full_messages %>
+  <% @tracks.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <table>
   <thead>
     <tr>

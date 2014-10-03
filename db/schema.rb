@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141002212539) do
   create_table "notes", force: true do |t|
     t.integer  "user_id"
     t.integer  "track_id"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

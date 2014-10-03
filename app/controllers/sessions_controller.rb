@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   before_action :redirect_if_user, only:  :new
 
   def new
-    fail
     render :new
   end
 
@@ -18,6 +17,11 @@ class SessionsController < ApplicationController
       login_user!(user)
       redirect_to user_url(user)
     end
+  end
+
+  def destroy
+    logout_user!(current_user)
+    redirect_to new_session_url
   end
 
   def redirect_if_user

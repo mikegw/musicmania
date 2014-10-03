@@ -1,0 +1,20 @@
+<% if track.notes.empty? %>
+  <%= track.name %> has no notes yet, why not add one?
+<% else %>
+  <% track.notes.each do |note| %>
+    <table>
+      <tr>
+        <td>
+          <pre>
+<strong><%= note.user.email %></strong>
+<%= note.text %>
+          </pre>
+        </td>
+        <td>
+  <%= (button_to 'Remove note',
+    user_note_url(note.user, note),
+    method: :delete) if current_user == note.user %></td>
+        </td>
+    </table>
+  <% end %>
+<% end %>

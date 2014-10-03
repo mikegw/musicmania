@@ -8,11 +8,15 @@ Rails.application.routes.draw do
     resources :tracks, only: :new
   end
 
-  resources :tracks
+  resources :tracks do
+    resources :notes
+  end
 
-  resources :users
+  resources :users do
+    resources :notes
+  end
 
-  resource :session, only: [:create, :new]
+  resource :session, only: [:create, :new, :destroy]
 
   root to: 'sessions#show'
 

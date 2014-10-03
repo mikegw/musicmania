@@ -3,6 +3,7 @@ class AddNotes < ActiveRecord::Migration
     create_table "notes" do |t|
       t.integer :user_id, null: :false
       t.integer :track_id, null: :false
+      t.text :text, null: :falsse
 
       t.timestamps
     end

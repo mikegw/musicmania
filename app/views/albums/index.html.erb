@@ -1,5 +1,11 @@
 <h1>Listing albums</h1>
-
+<%@albums.each do |album|%>
+  <% if album.errors.full_messages %>
+    <% album.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+<% end %>
 <table>
   <thead>
     <tr>

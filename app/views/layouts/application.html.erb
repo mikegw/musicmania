@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>MusicMania</title>
+  <%= stylesheet_link_tag 'application',
+          media: 'all',
+          'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
 <% if signed_in? %>
   Signed in as <%= current_user.email %>
+  <%= button_to "Logout", session_url, method: :delete %>
 <% else %>
   <a href="<%= new_session_url %>" >Log In</a>
   <a href="<%= new_user_url %>" >Sign Up</a>

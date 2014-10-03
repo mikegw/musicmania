@@ -1,5 +1,9 @@
 <h1>Editing track</h1>
-
+<% if @track.errors.full_messages %>
+  <% @track.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <form action="<%= track_url(@track) %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
 
@@ -41,7 +45,7 @@
     >Bonus<br>
 
   <label for "lyrics">Lyrics</label><br>
-    <textarea name="track[lyrics]">
+    <textarea name="track[lyrics]" value="<%= @track.lyrics %>">
     </textarea>
 
   <br>
